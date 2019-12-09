@@ -16,7 +16,7 @@
     </el-row>
     <el-row>
       <el-col :span="10" offset="6" style="margin-top: 40px">
-        <el-button>开始打分</el-button>
+        <el-button @click="goTestRating">开始打分</el-button>
         <p style="font-size: 14px;text-align: center">我已理解上述内容，并承诺按照要求完成任务。</p>
       </el-col>
     </el-row>
@@ -25,7 +25,16 @@
 
 <script>
 export default {
-  name: 'introduction'
+  name: 'introduction',
+  methods: {
+    async goTestRating () {
+        await this.$router.push({path: '/testrating',
+            query: {
+                userid: this.$route.query.userid,
+                finished: this.$route.query.finished
+            }})
+    }
+  }
 }
 </script>
 

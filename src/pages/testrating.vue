@@ -2,7 +2,7 @@
   <div id="testrating">
     <el-row>
       <el-col offset="1">
-        <p style="font-size: 28px;text-align: left">第一组照片打分</p>
+        <p style="font-size: 28px;text-align: left">练习环节</p>
       </el-col>
     </el-row>
     <el-row>
@@ -52,7 +52,7 @@
     </el-row>
     <el-row>
       <el-col :span="3" offset="17" style="margin-top: 40px">
-        <el-button style="width: 160px; height: 60px" plain>确定，下一张</el-button>
+        <el-button style="width: 160px; height: 60px" plain @click="goRating">确定，下一张</el-button>
       </el-col>
     </el-row>
   </div>
@@ -65,6 +65,15 @@ export default {
     return {
       src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
     }
+  },
+  methods: {
+      async goRating () {
+          await this.$router.push({path: '/rating',
+              query: {
+                  userid: this.$route.query.userid,
+                  finished: this.$route.query.finished
+              }})
+      }
   }
 }
 </script>
